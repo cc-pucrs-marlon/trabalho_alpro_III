@@ -16,7 +16,7 @@ public class Main {
             arvore.addObjectNonAVL(valores0[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
 
         arvore = new Arvore();
@@ -25,7 +25,7 @@ public class Main {
             arvore.addObjectNonAVL(valores1[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores2[] = {215,220,110,308,200,50,218};
@@ -33,7 +33,7 @@ public class Main {
             arvore.addObjectNonAVL(valores2[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores3[] = {75,80,60,95,110,90,3,67,1,25,61,70,77,76,79};
@@ -41,7 +41,7 @@ public class Main {
             arvore.addObjectNonAVL(valores3[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores4[] = {7,9,26,50,5,11,1,6};
@@ -49,7 +49,7 @@ public class Main {
             arvore.addObjectNonAVL(valores4[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores5[] = {10,15,5,1,7,12,20,25,6,13};
@@ -57,7 +57,7 @@ public class Main {
             arvore.addObjectNonAVL(valores5[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores6[] = {12,11,10,5,13,14};
@@ -65,7 +65,7 @@ public class Main {
             arvore.addObjectNonAVL(valores6[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores7[] = {2000,5,3000,2900,2950,2500};
@@ -73,15 +73,14 @@ public class Main {
             arvore.addObjectNonAVL(valores7[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores8[] = {20,15,18,16,17};
         for (int i=0; i<valores8.length; i++){
             arvore.addObjectNonAVL(valores8[i]);
         }
-        System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores9[] = {30,27,33,28,31};
@@ -89,7 +88,7 @@ public class Main {
             arvore.addObjectNonAVL(valores9[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
 
         arvore = new Arvore();
         int valores10[] = {0,30,25,33,23,15,18};
@@ -97,6 +96,6 @@ public class Main {
             arvore.addObjectNonAVL(valores10[i]);
         }
         System.out.println();
-        arvore.printTreeJB();
+        System.out.println(arvore.printTreeJB());
     }
 }

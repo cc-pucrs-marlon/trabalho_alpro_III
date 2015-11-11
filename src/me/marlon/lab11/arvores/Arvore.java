@@ -140,16 +140,17 @@ public class Arvore {
         return d;
     }
 
-    public void printTreeJB(){
-        printTreeJB0(root);
+    public String printTreeJB(){
+        return printTreeJB0(root);
     }
 
-    private void printTreeJB0(Nodo nodo) {
+    private String printTreeJB0(Nodo nodo) {
         Stack<Nodo> filaAtual = new Stack<>();
         Stack<Nodo> proximaFila = new Stack<>();
-        StringBuilder texto = new StringBuilder();
-        String pipesNewLine = "";
-        int pipePos = 0;
+        StringBuilder textTemp = new StringBuilder();
+        StringBuilder textFinal = new StringBuilder();
+        //String pipesNewLine = "";
+        //int pipePos = 0;
         Nodo node;
         HashMap<Integer, Integer> hashPosition = fillPosition();
         int pos;
@@ -163,35 +164,38 @@ public class Arvore {
                 pos = hashPosition.get(node.key);
                 if(node.left != null) {
                     contASCII = hashPosition.get(node.left.key);
-                    //pipePos = texto.length();
-                    texto.append(stringBuilder(" ", contASCII - texto.length()));
-                    texto.append("|");
-                    //pipesNewLine += stringBuilder(" ", contASCII-pipePos);
+                    textTemp.append(stringBuilder(" ", contASCII - textTemp.length()));
+                    textTemp.append("|");
+                    //pipePos = textTemp.length();
+                    //pipesNewLine += stringBuilder(" ", contASCII);
                     //pipesNewLine += "|";
-                    texto.append(stringBuilder("-", pos-contASCII-1));
+                    textTemp.append(stringBuilder("-", pos - contASCII - 1));
                     proximaFila.push(node.left);
                 } else {
-                    texto.append(stringBuilder(" ", pos-texto.length()));
+                    textTemp.append(stringBuilder(" ", pos - textTemp.length()));
                 }
-                texto.append(node.key);
+                textTemp.append(node.key);
                 if(node.right != null) {
                     contASCII = hashPosition.get(node.right.key);
-                    //pipesNewLine += stringBuilder(" ", contASCII-pipesNewLine.length()+2);
+                    //pipesNewLine += stringBuilder(" ", contASCII-pipesNewLine.length());
                     //pipesNewLine += "|";
-                    texto.append(stringBuilder("-", contASCII-pos-1));
-                    texto.append("|");
+                    textTemp.append(stringBuilder("-", contASCII - pos - 1));
+                    textTemp.append("|");
                     proximaFila.push(node.right);
                 }
             }
-            //texto += "\n"+pipesNewLine;
-            System.out.print(texto);
-            texto = new StringBuilder();
-            pipesNewLine = "";
-            System.out.println();
+            //textTemp.append("\n"+pipesNewLine);
+            //System.out.print(textTemp);
+            textFinal.append(textTemp);
+            textTemp = new StringBuilder();
+            //pipesNewLine = "";
+            textFinal.append("\n");
+            //System.out.println();
             while (proximaFila.size() > 0){
                 filaAtual.push(proximaFila.pop());
             }
         } while (filaAtual.size() > 0);
+        return textFinal.toString();
     }
 
     public HashMap<Integer, Integer> fillPosition(){
