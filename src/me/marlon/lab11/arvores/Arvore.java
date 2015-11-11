@@ -8,18 +8,18 @@ import java.util.*;
 public class Arvore {
     private Nodo root;
 
-    public void addObjectNonAVL(int key){
-        root = addObjectNonAVL0(root, key);
+    public void addBST(int key){
+        root = addBST0(root, key);
     }
 
-    private Nodo addObjectNonAVL0(Nodo nodo, int key) {
+    private Nodo addBST0(Nodo nodo, int key) {
         if(nodo == null){
             return new Nodo(key);
         }
         if(key > nodo.key){
-            nodo.right = addObjectNonAVL0(nodo.right, key);
+            nodo.right = addBST0(nodo.right, key);
         }else if(key < nodo.key){
-            nodo.left = addObjectNonAVL0(nodo.left, key);
+            nodo.left = addBST0(nodo.left, key);
         }else{
             throw new IllegalArgumentException("Já existe um nodo com essa chave");
         }
@@ -29,16 +29,16 @@ public class Arvore {
     }
 
 
-    public void addObjectAVL(int key){
-        root = addObjectAVL0(root, key);
+    public void addAVL(int key){
+        root = addAVL0(root, key);
     }
 
-    private Nodo addObjectAVL0(Nodo nodo, int key) {
+    private Nodo addAVL0(Nodo nodo, int key) {
         if (nodo == null) {
             return new Nodo(key);
         }
         if (key > nodo.key) {
-            nodo.right = addObjectAVL0(nodo.right, key);
+            nodo.right = addAVL0(nodo.right, key);
             if(h(nodo.left) - h(nodo.right) == -2){
                 if(key>nodo.right.key){
                     nodo = rotationWithSonRight(nodo);
@@ -47,7 +47,7 @@ public class Arvore {
                 }
             }
         }else if (key<nodo.key) {
-            nodo.left = addObjectAVL0(nodo.left, key);
+            nodo.left = addAVL0(nodo.left, key);
             if(h(nodo.left) - h(nodo.right) == 2){
                 if(key<nodo.left.key){
                     nodo = rotationWithSonLeft(nodo);
@@ -145,57 +145,58 @@ public class Arvore {
     }
 
     private String printTreeJB0(Nodo nodo) {
+        int contador = 15;
+        int pos;
+        int contASCII;
         Stack<Nodo> filaAtual = new Stack<>();
         Stack<Nodo> proximaFila = new Stack<>();
         StringBuilder textTemp = new StringBuilder();
         StringBuilder textFinal = new StringBuilder();
-        //String pipesNewLine = "";
-        //int pipePos = 0;
         Nodo node;
         HashMap<Integer, Integer> hashPosition = fillPosition();
-        int pos;
-        int contASCII;
+        contador += hashPosition.size();
         if(nodo != null){
             filaAtual.push(nodo);
         }
         do{
+            contador += 9;
             while (filaAtual.size() > 0){
+                contador += 13;
                 node = filaAtual.pop();
                 pos = hashPosition.get(node.key);
                 if(node.left != null) {
+                    contador += 15;
                     contASCII = hashPosition.get(node.left.key);
                     textTemp.append(stringBuilder(" ", contASCII - textTemp.length()));
                     textTemp.append("|");
-                    //pipePos = textTemp.length();
-                    //pipesNewLine += stringBuilder(" ", contASCII);
-                    //pipesNewLine += "|";
                     textTemp.append(stringBuilder("-", pos - contASCII - 1));
                     proximaFila.push(node.left);
                 } else {
+                    contador += 4;
                     textTemp.append(stringBuilder(" ", pos - textTemp.length()));
                 }
                 textTemp.append(node.key);
                 if(node.right != null) {
+                    contador += 11;
                     contASCII = hashPosition.get(node.right.key);
-                    //pipesNewLine += stringBuilder(" ", contASCII-pipesNewLine.length());
-                    //pipesNewLine += "|";
                     textTemp.append(stringBuilder("-", contASCII - pos - 1));
                     textTemp.append("|");
                     proximaFila.push(node.right);
                 }
             }
-            //textTemp.append("\n"+pipesNewLine);
             //System.out.print(textTemp);
             textFinal.append(textTemp);
             textTemp = new StringBuilder();
-            //pipesNewLine = "";
             textFinal.append("\n");
             //System.out.println();
             while (proximaFila.size() > 0){
+                contador += 4;
                 filaAtual.push(proximaFila.pop());
             }
         } while (filaAtual.size() > 0);
+        //System.out.println("Contador: "+Integer.toString(contador));
         return textFinal.toString();
+        //return contador;
     }
 
     public HashMap<Integer, Integer> fillPosition(){
