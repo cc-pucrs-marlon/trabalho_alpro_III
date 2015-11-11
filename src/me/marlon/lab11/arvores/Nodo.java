@@ -3,29 +3,26 @@ package me.marlon.lab11.arvores;
 /**
  * Created by nolram on 25/09/15.
  */
-public class Nodo<T> {
-    public T key;
-    public Nodo<T> left;
-    public Nodo<T> right;
-    public Nodo<T> father;
+public class Nodo {
+    public int key;
+    public Nodo left;
+    public Nodo right;
+    public Nodo father;
     public int height;
 
-    public Nodo(T key){
+    public Nodo(int key){
         this.key = key;
         this.height = 0;
         left = right = father = null;
     }
 
     public Nodo(){
-        this.key = null;
+        this.key = 0;
         this.height = 0;
         left = right = father = null;
     }
 
     public String toString(){
-        if(key != null)
-            return key.toString();
-        else
-            return Integer.toString(-1);
+        return Integer.toString(this.key);
     }
 }
