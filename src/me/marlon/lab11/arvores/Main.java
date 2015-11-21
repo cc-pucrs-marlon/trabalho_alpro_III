@@ -141,5 +141,14 @@ public class Main {
         }
         System.out.println();
         System.out.println(arvore.printTreeJB());
+
+
+        arvore = new Arvore();
+        int valores11[] = {0,300,299,298,297,296,295,294,293,292,291,290,289};
+        for (int i=0; i<valores11.length; i++){
+            arvore.addBST(valores11[i]);
+        }
+        System.out.println();
+        System.out.println(arvore.printTreeJB());
     }
 }
